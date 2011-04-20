@@ -40,8 +40,6 @@ print "Sending command(", commandId, "):", " ".join(args)
 sock.send(ElementTree.tostring(xmlTree, encoding="us-ascii"))
 data = sock.recv(4096)
 
-#print data
-
 try:
     dataTree = ElementTree.XML(data)
 except:
@@ -49,7 +47,6 @@ except:
 else:
 	for responseTree in dataTree.findall('response'):
 		print "Received response(", responseTree.get('id'), "):", responseTree.text
-
 
 sock.shutdown(1)
 sock.close()
