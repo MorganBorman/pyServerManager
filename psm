@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
-import sys
 from server_manager import server_manager
+
+import sys
+from optparse import OptionParser
 
 #Path to directory containing server xml files
 SERVER_XML_PATH = "servers"
