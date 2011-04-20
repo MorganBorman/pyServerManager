@@ -1,0 +1,33 @@
+#!/usr/bin/python
+
+import socket, time, sys, os
+from optparse import OptionParser
+
+#Path to keep unix domain socket for interproces control
+UDS_FILEPATH = "uds"
+
+parser = OptionParser(usage = "usage: %prog [action] servername")
+
+parser.add_option("-a", "--action", action="store", type="string", dest="action")
+
+(options, args) = parser.parse_args()
+
+#print options, args
+
+if not options.action:
+	print "you must specify an action using the -a or --action flags"
+	sys.exit(0)
+
+sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+sock.connect(UDS_FILEPATH)
+
+command_id = time.time()
+sock.send("<xml><command id='" + str(int(command_id)) + "'>" + options.action + " " + " ".join(args) + "</command></xml>")
+print sock.recv(4096)
+
+sock.shutdown(1)
+sock.close()
+
+sock = None
+
+sys.exit(0)

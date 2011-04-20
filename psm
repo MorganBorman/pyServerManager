@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import sys
+from server_manager import server_manager
+
+#Path to directory containing server xml files
+SERVER_XML_PATH = "servers"
+
+#Path to keep unix domain socket for interproces control
+UDS_FILEPATH = "uds"
+
+if __name__ == "__main__":
+	serverManager = server_manager(SERVER_XML_PATH, UDS_FILEPATH)
+	serverManager.start()
+
+	if "--all" in sys.argv[1:]:
+		serverManager.autostart_all()
+	else:
+		serverManager.start_list(sys.argv[1:])
+	sys.exit(0)
