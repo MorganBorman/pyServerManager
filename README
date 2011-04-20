@@ -1,0 +1,9 @@
+Welcome to pyServerManager (psm)
+
+psm is a very simple server management tool which uses xml files to describe the launching details of servers.
+provides automatic relaunching of servers which crash.
+provides a mechanism for starting and stopping servers with a control script over unix domain sockets
+
+psm uses unix domain sockets, which limits its portability as-is to just unix based OS's.
+If someone wished however it would be very easy to change it to use network sockets (at a significant security risk).
+
