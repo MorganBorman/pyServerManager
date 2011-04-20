@@ -1,10 +1,10 @@
 from util import queue
 from command_handler import command_handler
 from control_intersponder import control_intersponder
-
+from server_definition import server_definition
 
 from os.path import join
-import threading, glob, time
+import threading, glob, time, os
 
 class server_manager(threading.Thread):
 	def __init__(self, xml_files_path, uds_file_path):

@@ -1,0 +1,21 @@
+<xml>
+	<import>fd_xsbs_common.xml</import>
+
+	<property>
+		<key>name</key>
+		<value>pluto</value>
+	</property>
+
+	<name>!name!</name>
+	<directory>!xsbs_root_path!</directory>
+	<executable>!xsbs_bin_path!</executable>
+	<autostart>True</autostart>
+	<arguments>
+		<arg>-a!xsbs_root_path!/fd_servers/!name!/Config/</arg>
+		<arg>-s!pyscripts_path!</arg>
+		<arg>-p!xsbs_root_path!/fd_servers/!name!/server-init.cfg</arg>
+		<arg>-n!name!</arg>
+	</arguments>
+	<stdout>!xsbs_root_path!/fd_servers/!name!/!name!.out</stdout>
+	<stderr>!xsbs_root_path!/fd_servers/!name!/!name!.err</stderr>
+</xml>

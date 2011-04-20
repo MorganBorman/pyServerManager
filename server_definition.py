@@ -1,3 +1,6 @@
+import xml.etree.ElementTree as ElementTree
+import os
+
 class server_definition:
 	def __init__(self, xmlFile):
 		self.symbols = {}
