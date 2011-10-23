@@ -1,0 +1,23 @@
+<xml>
+		<comment>Supports imports of other xml files</comment>
+		<import>cxsbs_common.xml</import>
+
+		<comment>supports rudimentary variables</comment>
+		<property>
+				<key>name</key>
+				<value>dev</value>
+		</property>
+
+		<comment>below are the tags that must be present for a specification of a server to be valid</comment>
+		<name>!name!</name>
+		<directory>!cxsbs_root_path!</directory>
+		<executable>!cxsbs_bin_path!</executable>
+		<autostart>True</autostart>
+		<arguments>
+				<arg>-r!cxsbs_root_path!</arg>
+				<arg>-p!plugins_path!</arg>
+				<arg>-i!instances_path!/!name!</arg>
+		</arguments>
+		<stdout>!instances_path!/!name!/!name!.out</stdout>
+		<stderr>!instances_path!/!name!/!name!.err</stderr>
+</xml>

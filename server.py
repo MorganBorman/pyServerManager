@@ -28,7 +28,9 @@ class server(threading.Thread):
 					self.process = subprocess.Popen(
 										self.args, 
 										executable=serverDef.executable, 
-										shell=False, stdout=self.stdoutf, 
+										shell=False, 
+										stdin=subprocess.PIPE, 
+										stdout=self.stdoutf, 
 										stderr=self.stderrf, 
 										env=os.environ, 
 										cwd=serverDef.directory
@@ -37,7 +39,10 @@ class server(threading.Thread):
 					self.messageQueue.push("server " + self.name + " encountered errors while starting subprocess.")
 				else:
 					self.messageQueue.push("server " + self.name + " spawned with a pid of " + str(self.process.pid))
-					return_code = self.process.wait()
+					try:
+						return_code = self.process.wait()
+					except OSError:
+						return_code = self.process.returncode
 					self.process = None
 					self.messageQueue.push("server " + self.name + " passed away with a return code of " + str(return_code))
 				self.end_time = time.time()
@@ -55,3 +60,7 @@ class server(threading.Thread):
 	def restart(self):
 		if self.process != None:
 			self.process.kill()
+			
+	def input(self, inputString):
+		if self.process != None:
+			self.process.communicate(inputString)

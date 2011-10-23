@@ -1,0 +1,18 @@
+<xml>
+        <property>
+                <key>cxsbs_root_path</key>
+                <value>../cxsbs</value>
+        </property>
+        <property>
+                <key>cxsbs_bin_path</key>
+                <value>!cxsbs_root_path!/bin/cxsbs</value>
+        </property>
+        <property>
+                <key>plugins_path</key>
+                <value>!cxsbs_root_path!/plugins</value>
+        </property>
+        <property>
+                <key>instances_path</key>
+                <value>!cxsbs_root_path!/instances</value>
+        </property>
+</xml>

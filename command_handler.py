@@ -14,6 +14,7 @@ class command_handler:
 		self.commands["start"] = self.start_server
 		self.commands["stop"] = self.stop_server
 		self.commands["restart"] = self.restart_server
+		self.commands["input"] = self.pass_input
 		self.commands["shutdown"] = self.shutdown
 		self.commands["available"] = self.list_available
 		self.commands["running"] = self.list_running
@@ -71,6 +72,23 @@ class command_handler:
 		if name in self.serverManager.server_data.keys():
 			if name in self.serverManager.servers.keys():
 				self.serverManager.servers[name].restart()
+			else:
+				return name + " is not running."
+		else:
+			return name + " is not a valid server name."
+		return "success"
+	
+	def pass_input(self, *args):
+		args = args[0]
+		name = args[0]
+		self.serverManager.server_data.keys()
+		if name in self.serverManager.server_data.keys():
+			if name in self.serverManager.servers.keys():
+				if len(args) > 1:
+					inputString = ' '.join(args[1:])
+				else:
+					inputString = ""
+				self.serverManager.servers[name].input(inputString)
 			else:
 				return name + " is not running."
 		else:
